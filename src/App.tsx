@@ -11,10 +11,16 @@ function App() {
 
   function Board() {
     const [square, setSquares] = useState(Array(9).fill(null));
+    const [nextIsX, setNextIsX] = useState(true);
     function handleClick(i) {
       const nextSquare = square.slice();
-      nextSquare[i] = "X";
+      if (nextIsX) {
+        nextSquare[i] = "X";
+      } else {
+        nextSquare[i] = "O";
+      }
       setSquares(nextSquare);
+      setNextIsX(!nextIsX);
     }
     return (
       <>
